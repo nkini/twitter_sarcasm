@@ -1,0 +1,6 @@
+data
+__pycache__
+accesskeys.py
+.fuse*
+.idea
+twitter_barebones
