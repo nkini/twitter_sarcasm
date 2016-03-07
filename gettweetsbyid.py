@@ -18,9 +18,10 @@ tweets = []
 count = 0
 sleep_for = 5.05
 
+
 @atexit.register
 def write_to_files():
-    global count,tweets
+    global count,tweets,not_retrieved
     fn = sys.argv[1]+'-tweets-'+str(count)+'.pkl'
     if os.path.exists(fn):
         fn += "-1"
