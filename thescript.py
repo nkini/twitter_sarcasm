@@ -2,9 +2,9 @@
 import pickle
 from datetime import datetime
 import glob
+import sys
 
-filelist = glob.glob('./scraped-with-JUSTKIDDING-*.pkl')
-filelist
+filelist = glob.glob(sys.argv[1])
 twobjs = []
 twidset = set()
 for fname in filelist:
@@ -19,8 +19,9 @@ for fname in filelist:
             
 timestamps = list(map(lambda x: x['timestamp'],twobjs))
 times = list(map(lambda t:datetime.strptime(t,'%I:%M %p - %d %b %Y').timestamp(),timestamps))
-times.index(min(times))
-times.index(max(times))
-timestamps[0]
-timestamps[2860]
-pickle.dump(twobjs,open('scraped-with-NOT-until-13Jan2016.pkl','wb'))
+
+print("max time",timestamps[times.index(max(times))])
+print("max time",timestamps[times.index(min(times))])
+
+filename = input('Give file name for the cumulative pickle: ')
+pickle.dump(twobjs,open(filename+'.pkl','wb'))
