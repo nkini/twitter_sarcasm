@@ -9,6 +9,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+query = '%23not'
 T = 0
 tweet_objs = []
 html_source = ''
@@ -34,9 +35,8 @@ class Sel(unittest.TestCase):
 
     def test_sel(self):
         driver = self.driver
-        #driver.get(self.base_url + "/search?q=%23justkidding&lang%3Aen until%3A2016-01-13 since%3A2015-02-14&src=typd")
-        driver.get(self.base_url + "/search?q=%23justkidding lang%3Aen until%3A2015-11-14&src=typd")
-        #driver.get(self.base_url + "/search?q=%23justkidding&lang=en&src=typd")
+        #driver.get(self.base_url + "/search?q=%23justkidding lang%3Aen until%3A2016-01-13 since%3A2015-02-14&src=typd")
+        driver.get(self.base_url + "/search?q=%23not lang%3Aen until%3A2016-01-10&src=typd")
         global T, html_source
         for i in range(1,2000):
             T = i
@@ -49,7 +49,7 @@ class Sel(unittest.TestCase):
 
 def write_to_files():
     global T,tweet_objs
-    fn = "scraped-with-JUSTKIDDING-"+str(T)+'.pkl'
+    fn = "scraped-with-NOT-"+str(T)+'.pkl'
     if os.path.exists(fn):
         fn += "-1"
     f1 = open(fn,'wb')
